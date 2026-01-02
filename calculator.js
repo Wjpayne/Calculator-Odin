@@ -107,38 +107,64 @@ document
   });
 
 // --- Keyboard support ---
-document.addEventListener("keydown", (e) => {
-  const key = e.key;
+document.addEventListener("keydown", handleKeydown);
+
+function handleKeydown(e) {
+  if (e.target.tagName === "INPUT") return;
+  const { key } = e;
 
   // Numbers
-  if (/\d/.test(key)) {
+  if (isNumber(key)) {
     appendNumber(key);
+    e.preventDefault();
+    return;
   }
 
   // Decimal
-  if (key === ".") appendNumber(".");
+  if (key === ".") {
+    appendNumber(".");
+    e.preventDefault();
+    return;
+  }
 
   // Operators
-  if (["+", "-", "*", "/"].includes(key)) chooseOperator(key);
+  if (isOperator(key)) {
+    chooseOperator(key);
+    e.preventDefault();
+    return;
+  }
 
-  // Enter = Compute
+  // Equals
   if (key === "Enter" || key === "=") {
     compute();
-    e.preventDefault(); // prevent form submission
+    e.preventDefault();
+    return;
   }
 
   // Backspace
-  if (key === "Backspace") backspace();
-  e.preventDefault();
+  if (key === "Backspace") {
+    handleBackspace();
+    e.preventDefault();
+    return;
+  }
 
-  // Delete = clear
-  if (key === "Delete") clearCalculator();
-  e.preventDefault();
+  // Clear
+  if (key === "Delete") {
+    clearCalculator();
+    e.preventDefault();
+    return;
+  }
+}
 
-  // N = toggle sign
-  if (key.toLowerCase() === "n") toggleSign();
-});
+function isNumber(key) {
+  return /^\d$/.test(key);
+}
 
-// Initial display
+function isOperator(key) {
+  return ["+", "-", "*", "/"].includes(key);
+}
 
-updateDisplay();
+function handleBackspace() {
+  currentInput = currentInput.slice(0, -1);
+  updateDisplay();
+}
