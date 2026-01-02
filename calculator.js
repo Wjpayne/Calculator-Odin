@@ -9,6 +9,7 @@ let previousInput = "";
 
 function updateDisplay() {
   display.textContent = currentInput || "0";
+  console.log("Display updated:", display.textContent);
 }
 
 //append number function
