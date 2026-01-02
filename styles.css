@@ -51,3 +51,13 @@ body {
 .btn:active {
   background: #777;
 }
+
+.btn.operator {
+  background: #ff9500;
+}
+.btn.operator:hover {
+  background: #ffa733;
+}
+.btn.operator:active {
+  background: #cc7a00;
+}
