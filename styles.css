@@ -1,3 +1,7 @@
+* {
+  touch-action: manipulation;
+}
+
 body {
   display: flex;
   justify-content: center;
@@ -6,6 +10,7 @@ body {
   background: #282c34;
   font-family: Arial, sans-serif;
   margin: 0;
+  -webkit-text-size-adjust: 100%;
 }
 /* Calculator container */
 
@@ -45,6 +50,7 @@ body {
   color: #fff;
   cursor: pointer;
   transition: background 0.2s;
+   -webkit-tap-highlight-color: transparent;
 }
 
 .btn:hover {
