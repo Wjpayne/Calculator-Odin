@@ -61,3 +61,38 @@ body {
 .btn.operator:active {
   background: #cc7a00;
 }
+
+/* Responsive adjustments */
+@media (max-width: 400px) {
+  .calculator {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .display {
+    font-size: 1.5rem;
+    padding: 10px;
+  }
+
+  .btn {
+    padding: 15px;
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .calculator {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .display {
+    font-size: 1.2rem;
+    padding: 8px;
+  }
+
+  .btn {
+    padding: 12px;
+    font-size: 1rem;
+  }
+}
